@@ -21,28 +21,28 @@ package com.alibaba.fastjson.parser;
  */
 public enum Feature {
     /**
-	 * 
-	 */
+     *
+     */
     AutoCloseSource,
     /**
-	 * 
-	 */
+     *
+     */
     AllowComment,
     /**
-	 * 
-	 */
+     *
+     */
     AllowUnQuotedFieldNames,
     /**
-	 * 
-	 */
+     *
+     */
     AllowSingleQuotes,
     /**
-	 * 
-	 */
+     *
+     */
     InternFieldNames,
     /**
-	 * 
-	 */
+     *
+     */
     AllowISO8601DateFormat,
 
     /**
@@ -51,10 +51,10 @@ public enum Feature {
     AllowArbitraryCommas,
 
     /**
-     * 
+     *
      */
     UseBigDecimal,
-    
+
     /**
      * @since 1.1.2
      */
@@ -64,40 +64,37 @@ public enum Feature {
      * @since 1.1.3
      */
     SortFeidFastMatch,
-    
+
     /**
      * @since 1.1.3
      */
     DisableASM,
-    
+
     /**
      * @since 1.1.7
      */
     DisableCircularReferenceDetect,
-    
+
     /**
      * @since 1.1.10
      */
     InitStringFieldAsEmpty,
-    
+
     /**
      * @since 1.1.35
-     * 
      */
     SupportArrayToBean,
-    
+
     /**
      * @since 1.2.3
-     * 
      */
     OrderedField,
-    
+
     /**
      * @since 1.2.5
-     * 
      */
     DisableSpecialKeyDetect,
-    
+
     /**
      * @since 1.2.9
      */
@@ -110,14 +107,14 @@ public enum Feature {
 
     /**
      * @since 1.2.29
-     *
+     * <p>
      * disable autotype key '@type'
      */
     IgnoreAutoType,
 
     /**
      * @since 1.2.30
-     *
+     * <p>
      * disable field smart match, improve performance in some scenarios.
      */
     DisableFieldSmartMatch,
@@ -140,10 +137,14 @@ public enum Feature {
     /**
      * @since 1.2.55
      */
-    ErrorOnEnumNotMatch
-    ;
+    ErrorOnEnumNotMatch,
 
-    Feature(){
+    /**
+     * @since 1.2.57
+     */
+    NumericValueToString;
+
+    Feature() {
         mask = (1 << ordinal());
     }
 
@@ -166,18 +167,18 @@ public enum Feature {
 
         return features;
     }
-    
+
     public static int of(Feature[] features) {
         if (features == null) {
             return 0;
         }
-        
+
         int value = 0;
-        
-        for (Feature feature: features) {
+
+        for (Feature feature : features) {
             value |= feature.mask;
         }
-        
+
         return value;
     }
 }
